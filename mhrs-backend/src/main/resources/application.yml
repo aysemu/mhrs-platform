@@ -1,0 +1,46 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v1
+
+spring:
+  application:
+    name: mhrs-backend
+
+  # PostgreSQL Veritabanı Bağlantısı
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mhrs_db
+    username: postgres
+    password: postgrespassword
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      idle-timeout: 300000
+      connection-timeout: 20000
+
+  # JPA & Hibernate Ayarları
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      # Şemayı init.sql ile kurduğumuz için validate kullanıyoruz
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  # Redis Bağlantısı
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: redispassword
+      timeout: 3000ms
+
+# JWT ve Güvenlik Parametreleri
+app:
+  jwt:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    access-token-expiration-ms: 900000    # 15 dakika
+    refresh-token-expiration-ms: 604800000 # 7 gün
