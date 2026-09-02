@@ -10,8 +10,8 @@ spring:
   # PostgreSQL Veritabanı Bağlantısı
   datasource:
     url: jdbc:postgresql://localhost:5432/mhrs_db
-    username: postgres
-    password: postgrespassword
+    username: mhrs_user
+    password: mhrs_password
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 20
