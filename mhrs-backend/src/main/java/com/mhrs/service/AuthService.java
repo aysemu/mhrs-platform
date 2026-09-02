@@ -45,7 +45,7 @@ public class AuthService {
                 .email(request.getEmail().trim().toLowerCase())
                 .passwordHash(passwordEncoder.encode(request.getPassword()))
                 .phoneNumber(request.getPhoneNumber().trim())
-                .role(UserRole.CITIZEN) // Standart kayıtlar varsayılan CITIZEN açılır
+                .role(UserRole.ROLE_CITIZEN) // Standart kayıtlar varsayılan CITIZEN açılır
                 .build();
 
         User savedUser = userRepository.save(user);
