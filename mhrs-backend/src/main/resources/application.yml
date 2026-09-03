@@ -9,9 +9,9 @@ spring:
 
   # PostgreSQL Veritabanı Bağlantısı
   datasource:
-    url: jdbc:postgresql://localhost:5432/mhrs_db
-    username: mhrs_user
-    password: mhrs_password
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/mhrs_db}
+    username: ${DB_USERNAME:mhrs_user}
+    password: ${DB_PASSWORD:mhrs_password}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 20
@@ -23,7 +23,6 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      # Şemayı init.sql ile kurduğumuz için validate kullanıyoruz
       ddl-auto: validate
     show-sql: true
     properties:
@@ -33,14 +32,14 @@ spring:
   # Redis Bağlantısı
   data:
     redis:
-      host: localhost
-      port: 6379
-      password: redispassword
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:redispassword}
       timeout: 3000ms
 
 # JWT ve Güvenlik Parametreleri
 app:
   jwt:
-    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
     access-token-expiration-ms: 900000    # 15 dakika
-    refresh-token-expiration-ms: 604800000 # 7 gün
+    refresh-token-expiration-ms: 604800000 # 7 günn-ms: 604800000 # 7 gün
