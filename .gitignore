@@ -33,3 +33,20 @@ yarn-debug.log*
 yarn-error.log*
 logs/
 tmp/
+
+# Frontend Ekstra Derleme & Tip Kalıntıları (git status'unda çıkanlar)
+*.tsbuildinfo
+next-env.d.ts
+
+# Sertifikalar, Anahtarlar & Veri Tabanı Dökümleri
+*.pem
+*.key
+*.jks
+*.p12
+*.dump
+*.sql.gz
+
+# Docker Veri Dizinleri (Container volume verileri diske yazılıyorsa)
+docker-data/
+postgres-data/
+redis-data/
